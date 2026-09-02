@@ -1,0 +1,7 @@
+matplotlib==3.11.1
+meteodata-lab==0.8.0
+numpy==2.3.5
+pandas==2.3.3
+requests==2.34.2
+earthkit-data==1.2.0
+covjsonkit==0.2.22

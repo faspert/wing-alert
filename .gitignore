@@ -1,0 +1,14 @@
+.env
+.env.example
+.venv/
+.cache/
+__pycache__/
+*.py[cod]
+
+# Signal-cli account state and credentials.
+signal-data/
+
+# Runtime state and generated forecast plots.
+windfoil_state.json
+windfoil_grid_state.json
+plots/

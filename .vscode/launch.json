@@ -1,0 +1,16 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Run (dry run)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "python": "${workspaceFolder}/.venv/bin/python",
+            "env": {
+                "DRY_RUN": "1",
+            },
+            "console": "integratedTerminal"
+        }
+    ]
+}
