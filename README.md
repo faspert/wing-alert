@@ -4,6 +4,16 @@ Wing Alert checks MeteoSwiss ICON forecasts for windfoil conditions at the confi
 
 The container runs [`wing-alert-grid.py`](wing-alert-grid.py) once. Schedule the container with cron, systemd, or another scheduler if it should check regularly.
 
+For a daily check at 07:00, add a cron entry using the absolute path to this
+repository:
+
+```cron
+0 7 * * * cd /absolute/path/to/wing-alert && docker run --rm --env-file .env -v "$PWD/signal-data:/var/lib/signal-cli" -v "$PWD/runtime:/data" wing-alert >> runtime/cron.log 2>&1
+```
+
+The non-grid [`wing-alert.py`](wing-alert.py) checker also waits 24 hours
+between checks when run directly.
+
 ## Configuration
 
 Create a local environment file, for example `.env`, with:

@@ -358,7 +358,7 @@ def check_once():
 
 
 # ============================================================
-# Entry point  (run once; schedule with cron for daily checks)
+# Entry point (run once; schedule the container with cron for daily checks)
 # ============================================================
 
 

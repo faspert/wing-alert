@@ -32,7 +32,8 @@ PARAMS = (
     "dkl010h0",
 )
 
-CHECK_MINUTES = 60
+# Run the legacy point-forecast checker once per day.
+CHECK_MINUTES = 24 * 60
 LOOKAHEAD_HOURS = 72
 
 STATE_FILE = Path("windfoil_state.json")
@@ -374,7 +375,7 @@ def check_once():
 
 
 # ============================================================
-# Run forever
+# Run forever, checking once per day
 # ============================================================
 
 
