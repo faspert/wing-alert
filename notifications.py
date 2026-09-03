@@ -20,13 +20,18 @@ def _signal_text(alert, source):
     )
 
 
-def send_signal(alert, source, dry_run=False):
-    """Send one alert to the configured Signal group using signal-cli."""
+def send_signal(alert, source, dry_run=False, attachment=None):
+    """Send one alert and an optional attachment to the configured Signal group."""
 
     text = _signal_text(alert, source)
     if dry_run:
         log.info("[DRY RUN] Signal group message\n%s", text)
+        if attachment:
+            log.info("[DRY RUN] Signal attachment: %s", attachment)
         return
+
+    if attachment is not None and not os.path.isfile(attachment):
+        raise FileNotFoundError(f"Signal attachment not found: {attachment}")
 
     account = os.getenv("SIGNAL_ACCOUNT")
     group_id = os.getenv("SIGNAL_GROUP_ID")
@@ -45,6 +50,8 @@ def send_signal(alert, source, dry_run=False):
         "-m",
         text,
     ]
+    if attachment is not None:
+        command.extend(["--attachment", attachment])
 
     try:
         result = subprocess.run(
